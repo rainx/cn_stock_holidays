@@ -35,7 +35,7 @@ pip install git+https://github.com/zhikuang/cn_stock_holidays.git
 
 ### Functions
 
-```
+```python
 elp on module cn_stock_holidays.data in cn_stock_holidays:
 
 NAME
