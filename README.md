@@ -36,7 +36,7 @@ pip install git+https://github.com/zhikuang/cn_stock_holidays.git
 ### Functions
 
 ```python
-elp on module cn_stock_holidays.data in cn_stock_holidays:
+Help on module cn_stock_holidays.data in cn_stock_holidays:
 
 NAME
     cn_stock_holidays.data - Help functions for python to get china stock exchange holidays
@@ -75,3 +75,17 @@ FUNCTIONS
 ```
 
 
+### Keep it up-to-update
+
+we had a script to check the expired of the data and fetch the data from web.
+
+you could set it up on cron job
+
+```crontab
+0 0 * * * /usr/local/bin/cn-stock-holiday-sync > /tmp/cn_stock_holiday_sync.log
+```
+
+You could get the absolute path of cn-stock-holiday-sync by which command
+```bash
+which cn-stock-holiday-sync
+```

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "cn-stock-holidays",
-    version = "0.1",
+    version = "0.2",
     packages = find_packages(),
     install_requires=[
         'requests'
@@ -22,7 +22,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'cn-stock-holidy-sync=cn_stock_holidays.data:sync_data',
+            'cn-stock-holiday-sync=cn_stock_holidays.data:sync_data',
         ]
     }
 )
