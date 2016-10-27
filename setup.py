@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "cn-stock-holidays",
-    version = "0.3",
+    version = "0.4",
     packages = find_packages(),
     install_requires=[
         'requests'
@@ -14,7 +14,7 @@ setup(
     description="A List of china stock exchange holidays",
     license="MIT",
     keywords="china stock holiday exchange shanghai shenzhen",
-    url="https://github.com/zhikuang/cn_stock_holidays.git",  # project home page, if any
+    url="https://github.com/rainx/cn_stock_holidays.git",  # project home page, if any
 
     package_data={
         # If any package contains *.txt or *.rst files, include them:

@@ -34,7 +34,7 @@ def get_remote_and_cache():
     get newest data file from network and cache on local machine
     :return: a list contains all holiday data, element with datatime.date format
     """
-    response = requests.get('https://raw.githubusercontent.com/zhikuang/cn_stock_holidays/master/cn_stock_holidays/data.txt')
+    response = requests.get('https://raw.githubusercontent.com/rainx/cn_stock_holidays/master/cn_stock_holidays/data.txt')
     cache_path = get_cache_path()
 
     with open(cache_path, 'wb') as f:

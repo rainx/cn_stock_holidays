@@ -9,11 +9,11 @@ cn_stock_holidays/data.txt
 Fetch Data via URL :
 
 ```
-wget https://raw.githubusercontent.com/zhikuang/cn_stock_holidays/master/cn_stock_holidays/data.txt
+wget https://raw.githubusercontent.com/rainx/cn_stock_holidays/master/cn_stock_holidays/data.txt
 
 or
 
-curl https://raw.githubusercontent.com/zhikuang/cn_stock_holidays/master/cn_stock_holidays/data.txt
+curl https://raw.githubusercontent.com/rainx/cn_stock_holidays/master/cn_stock_holidays/data.txt
 ```
 
 ## 文件内容 ( File Content)
@@ -30,7 +30,7 @@ YYYYMMDD
 ## Python version
 
 ```
-pip install git+https://github.com/zhikuang/cn_stock_holidays.git
+pip install git+https://github.com/rainx/cn_stock_holidays.git
 ```
 
 ### Functions
