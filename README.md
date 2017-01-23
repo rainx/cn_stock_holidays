@@ -72,6 +72,22 @@ FUNCTIONS
     str_to_int(s)
 
     sync_data()
+
+
+    is_trading_day(dt)
+        param dt: datetime.date or datetime.date.
+        is a trading day or not
+        :returns: Bool
+
+    previous_trading_day(dt):
+        param dt: datetime.date or datetime.date.
+        get previous trading day
+        :returns: datetime.date
+
+    next_trading_day(dt):
+        param dt: datetime.date or datetime.date.
+        get next trading day
+        :returns: datetime.date
 ```
 
 

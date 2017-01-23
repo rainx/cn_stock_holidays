@@ -88,6 +88,36 @@ def str_to_int(s):
 def date_to_int(da):
     return str_to_int(date_to_str(da))
 
+def is_trading_day(dt: datetime.datetime):
+    if type(dt) is datetime.datetime:
+        dt = dt.date()
+
+    if dt.weekday() >= 5:
+        return False
+    holidays = get_cached()
+    for holiday in holidays:
+        if holiday == dt:
+            return False
+    return True
+
+def previous_trading_day(dt: datetime.datetime):
+    if type(dt) is datetime.datetime:
+        dt = dt.date()
+
+    while True:
+        dt = dt - datetime.timedelta(days=1)
+        if is_trading_day(dt):
+            return dt
+
+def next_trading_day(dt: datetime.datetime):
+    if type(dt) is datetime.datetime:
+        dt = dt.date()
+
+    while True:
+        dt = dt + datetime.timedelta(days=1)
+        if is_trading_day(dt):
+            return dt
+
 if __name__ == '__main__':
     data = check_expired()
     #data = get_cached()
