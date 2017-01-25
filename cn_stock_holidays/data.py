@@ -118,6 +118,25 @@ def next_trading_day(dt: datetime.datetime):
         if is_trading_day(dt):
             return dt
 
+
+def trading_days_between(start, end):
+    # 为了更快的遍历，我们使用 set 结构
+    if type(start) is datetime.datetime:
+        start = start.date()
+
+    if type(end) is datetime.datetime:
+        end = end.date()
+
+    dataset = set(get_cached())
+    if start > end:
+        return
+    curdate = start
+    while curdate <= end:
+        if curdate.weekday() < 5 and not(curdate in dataset):
+            yield curdate
+        curdate = curdate + datetime.timedelta(days=1)
+
+
 if __name__ == '__main__':
     data = check_expired()
     #data = get_cached()

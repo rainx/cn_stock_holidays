@@ -75,19 +75,25 @@ FUNCTIONS
 
 
     is_trading_day(dt)
-        param dt: datetime.date or datetime.date.
+        param dt: datetime.datetime or datetime.date.
         is a trading day or not
         :returns: Bool
 
     previous_trading_day(dt):
-        param dt: datetime.date or datetime.date.
+        param dt: datetime.datetime or datetime.date.
         get previous trading day
         :returns: datetime.date
 
     next_trading_day(dt):
-        param dt: datetime.date or datetime.date.
+        param dt: datetime.datetime or datetime.date.
         get next trading day
         :returns: datetime.date
+
+    trading_days_between(start, end):
+
+        param start, end: start and end time , datetime.datetime or datetime.date
+        get calendar data range
+        :returns: a generator for available dates for chinese market included start and end date
 ```
 
 
