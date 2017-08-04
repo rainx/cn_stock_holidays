@@ -65,7 +65,7 @@ class SHSZExchangeCalendar(TradingCalendar):
 
     @property
     def adhoc_holidays(self):
-        return [Timestamp(t,tz=pytz.UTC) for t in get_cached()]
+        return [Timestamp(t,tz=pytz.UTC) for t in get_cached(use_list=True)]
 
 
     @property

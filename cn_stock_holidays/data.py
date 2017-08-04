@@ -37,26 +37,26 @@ else: # suppose it is 3 or larger
     function_cache = lru_cache(None)
 
 
-def get_local():
+def get_local(use_list=False):
     """
     read data from package data file
     :return: a list contains all holiday data, element with datatime.date format
     """
     datafilepath = os.path.join(os.path.dirname(__file__), 'data.txt')
-    return _get_from_file(datafilepath)
+    return _get_from_file(datafilepath, use_list)
 
 @function_cache
-def get_cached():
+def get_cached(use_list=False):
     """
     get from cache version , if it is not exising , use txt file in package data
-    :return: a list contains all holiday data, element with datatime.date format
+    :return: a list/set contains all holiday data, element with datatime.date format
     """
     cache_path = get_cache_path()
 
     if (os.path.isfile(cache_path)):
-        return _get_from_file(cache_path)
+        return _get_from_file(cache_path, use_list)
     else:
-        return get_local()
+        return get_local(use_list=False)
 
 def get_remote_and_cache():
     """
@@ -86,6 +86,7 @@ def check_expired():
     return True
 
 def sync_data():
+    logging.basicConfig(level=logging.INFO)
     if check_expired():
         logging.info("trying to fetch data...")
         get_remote_and_cache()
@@ -93,11 +94,17 @@ def sync_data():
     else:
         logging.info("local data is not exipired, do not fetch new data")
 
-def _get_from_file(filename):
+def _get_from_file(filename, use_list=False):
     with open(filename, 'r') as f:
         data = f.readlines()
-        return [int_to_date(str_to_int(i.rstrip('\n'))) for i in data]
-    return []
+        if use_list:
+            return [int_to_date(str_to_int(i.rstrip('\n'))) for i in data]
+        else:
+            return set([int_to_date(str_to_int(i.rstrip('\n'))) for i in data])
+    if use_list:
+        return []
+    else:
+        return set([])
 
 def get_cache_path():
     usr_home = os.path.expanduser('~')
@@ -150,14 +157,13 @@ def next_trading_day(dt):
 
 
 def trading_days_between(start, end):
-    # 为了更快的遍历，我们使用 set 结构
     if type(start) is datetime.datetime:
         start = start.date()
 
     if type(end) is datetime.datetime:
         end = end.date()
 
-    dataset = set(get_cached())
+    dataset = get_cached()
     if start > end:
         return
     curdate = start
@@ -195,3 +201,8 @@ if __name__ == '__main__':
     print("previous trading day after today?")
     data = previous_trading_day(datetime.date.today())
     print_result(data)
+
+    print("Test loop 100000")
+    trade_days = datetime.date.today()
+    for i in range(100000):
+        trade_days = previous_trading_day(trade_days)

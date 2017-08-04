@@ -19,7 +19,7 @@ class TestData(unittest.TestCase):
 
         self.assertGreater(len(data), 0, "is greater then 0")
 
-        self.assertIsInstance(data[0], datetime.date, "is a date")
+        self.assertIsInstance(list(data)[0], datetime.date, "is a date")
 
         self.assertTrue(datetime.date(1991, 2, 15) in data, "get datetime.date(1991, 2, 15) in cached data")
 
@@ -49,3 +49,9 @@ class TestData(unittest.TestCase):
         data2 = get_cached()
         self.assertEqual(str(data), str(data2), "get_cached 2 times give some results")
 
+    def test_loop_100000(self):
+        trade_days = datetime.date.today()
+        for i in range(100000):
+            trade_days = previous_trading_day(trade_days)
+
+        self.assertIsInstance(trade_days, datetime.date)
