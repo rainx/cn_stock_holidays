@@ -8,7 +8,29 @@ import os
 import datetime
 import requests
 import logging
+import sys
+from functools import wraps
 
+
+# make a function_cache for both 2 and 3
+if sys.version_info.major == 2:
+    def function_cache(function):
+        memo = {}
+
+        @wraps(function)
+        def wrapper(*args):
+            if args in memo:
+                return memo[args]
+            else:
+                rv = function(*args)
+                memo[args] = rv
+                return rv
+
+        return wrapper
+
+else: # suppose it is 3 or larger
+    from functools import lru_cache
+    function_cache = lru_cache(None)
 
 
 def get_local():
@@ -19,6 +41,7 @@ def get_local():
     datafilepath = os.path.join(os.path.dirname(__file__), 'data.txt')
     return _get_from_file(datafilepath)
 
+@function_cache
 def get_cached():
     """
     get from cache version , if it is not exising , use txt file in package data
@@ -97,9 +120,8 @@ def is_trading_day(dt):
     if dt.weekday() >= 5:
         return False
     holidays = get_cached()
-    for holiday in holidays:
-        if holiday == dt:
-            return False
+    if dt in holidays:
+        return False
     return True
 
 def previous_trading_day(dt):
@@ -141,20 +163,29 @@ def trading_days_between(start, end):
 
 if __name__ == '__main__':
     data = check_expired()
-    #data = get_cached()
 
-    print("test trading_days_between 20170401 to 20170501")
-    data = list(trading_days_between(int_to_date(20170401), int_to_date(20170501)))
-    print(data)
+    def print_result(s):
+        print("-" * 20)
+        print("*" + str(s) + "*")
+        print("-" * 20)
+        print("")
+
+    print("get datetime.date(1991, 2, 15) in cached data")
+    data = get_cached()
+    print_result(datetime.date(1991, 2, 15) in data)
+
+    print("test trading_days_between 20170125 to 20170131")
+    data = list(trading_days_between(int_to_date(20170125), int_to_date(20170131)))
+    print_result(data)
 
     print("is trading day today?")
     data = is_trading_day(datetime.date.today())
-    print(data)
+    print_result(data)
 
     print("next trading day after today?")
     data = next_trading_day(datetime.date.today())
-    print(data)
+    print_result(data)
 
     print("previous trading day after today?")
     data = previous_trading_day(datetime.date.today())
-    print(data)
+    print_result(data)
