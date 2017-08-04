@@ -1,3 +1,4 @@
+#coding: utf-8
 """
 Help functions for python to get china stock exchange holidays
 """
@@ -6,6 +7,7 @@ Help functions for python to get china stock exchange holidays
 import os
 import datetime
 import requests
+import logging
 
 
 
@@ -56,11 +58,11 @@ def check_expired():
 
 def sync_data():
     if check_expired():
-        print("trying to fetch data...")
+        logging.info("trying to fetch data...")
         get_remote_and_cache()
-        print("done")
+        logging.info("done")
     else:
-        print("local data is not exipired, do not fetch new data")
+        logging.info("local data is not exipired, do not fetch new data")
 
 def _get_from_file(filename):
     with open(filename, 'r') as f:
@@ -88,7 +90,7 @@ def str_to_int(s):
 def date_to_int(da):
     return str_to_int(date_to_str(da))
 
-def is_trading_day(dt: datetime.datetime):
+def is_trading_day(dt):
     if type(dt) is datetime.datetime:
         dt = dt.date()
 
@@ -100,7 +102,7 @@ def is_trading_day(dt: datetime.datetime):
             return False
     return True
 
-def previous_trading_day(dt: datetime.datetime):
+def previous_trading_day(dt):
     if type(dt) is datetime.datetime:
         dt = dt.date()
 
@@ -109,7 +111,7 @@ def previous_trading_day(dt: datetime.datetime):
         if is_trading_day(dt):
             return dt
 
-def next_trading_day(dt: datetime.datetime):
+def next_trading_day(dt):
     if type(dt) is datetime.datetime:
         dt = dt.date()
 
@@ -141,4 +143,18 @@ if __name__ == '__main__':
     data = check_expired()
     #data = get_cached()
 
+    print("test trading_days_between 20170401 to 20170501")
+    data = list(trading_days_between(int_to_date(20170401), int_to_date(20170501)))
+    print(data)
+
+    print("is trading day today?")
+    data = is_trading_day(datetime.date.today())
+    print(data)
+
+    print("next trading day after today?")
+    data = next_trading_day(datetime.date.today())
+    print(data)
+
+    print("previous trading day after today?")
+    data = previous_trading_day(datetime.date.today())
     print(data)
