@@ -18,14 +18,18 @@ if sys.version_info.major == 2:
         memo = {}
 
         @wraps(function)
-        def wrapper(*args):
+        def wrapper(*args, **kwargs):
             if args in memo:
                 return memo[args]
             else:
-                rv = function(*args)
+                rv = function(*args, ** kwargs)
                 memo[args] = rv
                 return rv
 
+        def cache_clear():
+            global memo
+            memo = {}
+        wrapper.cache_clear = cache_clear
         return wrapper
 
 else: # suppose it is 3 or larger
@@ -64,6 +68,8 @@ def get_remote_and_cache():
 
     with open(cache_path, 'wb') as f:
         f.write(response.content)
+
+    get_cached.cache_clear()
 
     return get_cached()
 

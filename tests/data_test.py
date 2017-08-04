@@ -43,3 +43,9 @@ class TestData(unittest.TestCase):
         data = previous_trading_day(datetime.date.today())
         self.assertLess(data, datetime.date.today())
 
+    def test_cache_clear(self):
+        data = get_cached()
+        get_cached.cache_clear()
+        data2 = get_cached()
+        self.assertEqual(str(data), str(data2), "get_cached 2 times give some results")
+

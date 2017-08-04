@@ -96,6 +96,16 @@ FUNCTIONS
         :returns: a generator for available dates for chinese market included start and end date
 ```
 
+### about function cache
+
+from version 0.10 on, we used functools.lrucache on `get_cached` for getting more speech, 
+if needed you can used the following syntax to clear cache.
+
+```python
+get_cached.cache_clear()  
+
+```
+
 
 ### Keep it up-to-update
 
