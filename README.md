@@ -107,7 +107,7 @@ get_cached.cache_clear()
 ```
 
 
-### Keep it up-to-update
+### Keep it up-to-date
 
 we had a script to check the expired of the data and fetch the data from web.
 
