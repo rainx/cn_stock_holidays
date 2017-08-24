@@ -5,6 +5,8 @@ python:
     - "3.6"
     - "3.6-dev" # 3.6 development branch
     - "nightly" # currently points to 3.7-dev
+    - "pypy"
+    - "pypy3"
 
 install:
     - pip install -e .
