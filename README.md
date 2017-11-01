@@ -32,6 +32,12 @@ YYYYMMDD
 ## Python version
 
 ```
+pip install cn-stock-holidays
+```
+
+or
+
+```
 pip install git+https://github.com/rainx/cn_stock_holidays.git
 ```
 
