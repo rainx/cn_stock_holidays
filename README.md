@@ -4,9 +4,19 @@
 [![Build Status](https://travis-ci.org/rainx/cn_stock_holidays.svg?branch=master)](https://travis-ci.org/rainx/cn_stock_holidays)
 
 ## 数据文件 (File Path)
+
+沪深市场
+
 ```
 cn_stock_holidays/data.txt
 ```
+
+香港市场
+
+```
+cn_stock_holidays/data_hk.txt
+```
+
 
 Fetch Data via URL :
 
@@ -17,6 +27,7 @@ or
 
 curl https://raw.githubusercontent.com/rainx/cn_stock_holidays/master/cn_stock_holidays/data.txt
 ```
+
 
 ## 文件内容 ( File Content)
 
@@ -39,6 +50,18 @@ or
 
 ```
 pip install git+https://github.com/rainx/cn_stock_holidays.git
+```
+
+### 导入
+
+```python
+
+# 针对沪深
+import cn_stock_holidays.data as shsz
+
+# 针对香港
+import cn_stock_holidays.data_hk as hkex
+
 ```
 
 ### Functions
@@ -126,6 +149,12 @@ you could set it up on cron job
 ```
 
 You could get the absolute path of cn-stock-holiday-sync by which command
+
+沪深
 ```bash
 which cn-stock-holiday-sync
+```
+香港
+```bash
+which cn-stock-holiday-sync-hk
 ```
