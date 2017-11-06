@@ -1,13 +1,14 @@
-#coding: utf-8
+#coding:utf-8
+
 """
-Help functions for python to get china stock exchange holidays
+Help functions for python to get Hongkong stock exchange holidays
 """
 from cn_stock_holidays.meta_functions import *
 
-DATA_FILE_FOR_SHSZ = "data.txt"
+DATA_FILE_FOR_HK = "data_hk.txt"
 
-get_local = meta_get_local(data_file_name=DATA_FILE_FOR_SHSZ)
-get_cache_path = meta_get_cache_path(data_file_name=DATA_FILE_FOR_SHSZ)
+get_local = meta_get_local(data_file_name=DATA_FILE_FOR_HK)
+get_cache_path = meta_get_cache_path(data_file_name=DATA_FILE_FOR_HK)
 
 @function_cache
 def get_cached(use_list=False):
@@ -20,6 +21,7 @@ is_trading_day = meta_is_trading_day(get_cached=get_cached)
 previous_trading_day = meta_previous_trading_day(is_trading_day=is_trading_day)
 next_trading_day = meta_next_trading_day(is_trading_day=is_trading_day)
 trading_days_between = meta_trading_days_between(get_cached=get_cached)
+
 
 if __name__ == '__main__':
     data = check_expired()

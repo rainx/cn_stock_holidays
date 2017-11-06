@@ -1,5 +1,5 @@
 from datetime import time
-from cn_stock_holidays.data import get_cached
+from cn_stock_holidays.data_hk import get_cached
 from pandas import Timestamp, date_range, DatetimeIndex
 import pytz
 from zipline.utils.memoize import remember_last, lazyval
@@ -11,14 +11,14 @@ import numpy as np
 import pandas as pd
 
 # lunch break for shanghai and shenzhen exchange
-lunch_break_start = time(11, 30)
-lunch_break_end = time(13, 1)
+lunch_break_start = time(12, 30)
+lunch_break_end = time(14, 31)
 
-start_default = pd.Timestamp('1990-12-19', tz='UTC')
+start_default = pd.Timestamp('2000-12-25', tz='UTC')
 end_base = pd.Timestamp('today', tz='UTC')
 end_default = end_base + pd.Timedelta(days=365)
 
-class SHSZExchangeCalendar(TradingCalendar):
+class HKExchangeCalendar(TradingCalendar):
     """
     Exchange calendar for Shanghai and Shenzhen (China Market)
     Open Time 9:31 AM, Asia/Shanghai
@@ -29,11 +29,11 @@ class SHSZExchangeCalendar(TradingCalendar):
     Sample Code in ipython:
 
     > from zipline.utils.calendars import *
-    > from cn_stock_holidays.zipline.exchange_calendar_shsz import SHSZExchangeCalendar
-    > register_calendar("SHSZ", SHSZExchangeCalendar(), force=True)
-    > c=get_calendar("SHSZ")
+    > from cn_stock_holidays.zipline.exchange_calendar_hkex import HKExchangeCalendar
+    > register_calendar("HKEX", HKExchangeCalendar(), force=True)
+    > c=get_calendar("HKEX")
 
-    for the guy need to keep updating about holiday file, try to add `cn-stock-holiday-sync` command to crontab
+    for the guy need to keep updating about holiday file, try to add `cn-stock-holiday-sync-hk` command to crontab
     """
 
     def __init__(self, start=start_default, end=end_default):
@@ -49,7 +49,7 @@ class SHSZExchangeCalendar(TradingCalendar):
 
     @property
     def name(self):
-        return "SHSZ"
+        return "HKEX"
 
     @property
     def tz(self):
@@ -57,11 +57,11 @@ class SHSZExchangeCalendar(TradingCalendar):
 
     @property
     def open_time(self):
-        return time(9, 31)
+        return time(10, 1)
 
     @property
     def close_time(self):
-        return time(15, 0)
+        return time(16, 0)
 
     @property
     def adhoc_holidays(self):
@@ -109,6 +109,7 @@ class SHSZExchangeCalendar(TradingCalendar):
             before_lunch_size_int = int(daily_before_lunch_sizes[day_idx])
             after_lunch_size_int = int(daily_after_lunch_sizes[day_idx])
 
+            #print("idx:{}, before_lunch_size_int: {}".format(idx, before_lunch_size_int))
             all_minutes[idx:(idx + before_lunch_size_int)] = \
                 np.arange(
                     opens_in_ns[day_idx],
@@ -125,3 +126,7 @@ class SHSZExchangeCalendar(TradingCalendar):
 
             idx += size_int
         return DatetimeIndex(all_minutes).tz_localize("UTC")
+
+
+if __name__ == '__main__':
+    HKExchangeCalendar()
