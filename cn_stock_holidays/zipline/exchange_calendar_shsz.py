@@ -18,6 +18,7 @@ start_default = pd.Timestamp('1990-12-19', tz='UTC')
 end_base = pd.Timestamp('today', tz='UTC')
 end_default = end_base + pd.Timedelta(days=365)
 
+
 class SHSZExchangeCalendar(TradingCalendar):
     """
     Exchange calendar for Shanghai and Shenzhen (China Market)
@@ -46,6 +47,17 @@ class SHSZExchangeCalendar(TradingCalendar):
 
         TradingCalendar.__init__(self, start=start_default, end=end_default)
 
+        self.schedule = pd.DataFrame(
+            index=_all_days,
+            columns=['market_open', 'market_close', 'lunch_break_start', 'lunch_break_end'],
+            data={
+                'market_open': self._opens,
+                'market_close': self._closes,
+                'lunch_break_start': self._lunch_break_starts,
+                'lunch_break_end': self._lunch_break_ends
+            },
+            dtype='datetime64[ns]',
+        )
 
     @property
     def name(self):
@@ -65,8 +77,15 @@ class SHSZExchangeCalendar(TradingCalendar):
 
     @property
     def adhoc_holidays(self):
-        return [Timestamp(t,tz=pytz.UTC) for t in get_cached(use_list=True)]
+        return [Timestamp(t, tz=pytz.UTC) for t in get_cached(use_list=True)]
 
+    @lazyval
+    def _minutes_per_session(self):
+        diff = (
+               self.schedule.lunch_break_start.values.astype('datetime64[m]') - self.schedule.market_open.values.astype('datetime64[m]')) + (
+               self.schedule.market_close.values.astype('datetime64[m]') - self.schedule.lunch_break_end.values.astype('datetime64[m]'))
+        diff = diff.astype(np.int64)
+        return diff + 2
 
     @property
     @remember_last
