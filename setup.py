@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "cn-stock-holidays",
-    version = "1.4",
-    packages = find_packages(),
+    name="cn-stock-holidays",
+    version="1.5",
+    packages=find_packages(),
     install_requires=[
         'requests'
     ],
