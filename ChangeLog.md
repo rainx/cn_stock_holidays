@@ -1,3 +1,10 @@
+1.5 2019年11月26日
+---
+* 更新2020年中国市场休假数据 ref: https://www.tdx.com.cn/url/holiday/
+```
+$("table.table tr td:first-child").map((i, e)=>e.innerText).toArray().filter(e => /[\d.]/.test(e)).map(e=>e.replace(/\./g, "")).join("\n")
+```
+
 1.4 2019年1月8日
 ---
 * 更新2019年中国市场假期数据
