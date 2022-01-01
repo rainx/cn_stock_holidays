@@ -1,7 +1,6 @@
 # cn_stock_holidays
 
-
-[![Build Status](https://travis-ci.org/rainx/cn_stock_holidays.svg?branch=master)](https://travis-ci.org/rainx/cn_stock_holidays)
+![CI Status](https://github.com/rainx/cn_stock_holidays/actions/workflows/pytest.yml/badge.svg)
 
 ## 数据文件 (File Path)
 
@@ -17,7 +16,6 @@ cn_stock_holidays/data.txt
 cn_stock_holidays/data_hk.txt
 ```
 
-
 Fetch Data via URL :
 
 ```
@@ -28,7 +26,6 @@ or
 curl https://raw.githubusercontent.com/rainx/cn_stock_holidays/master/cn_stock_holidays/data.txt
 ```
 
-
 ## 文件内容 ( File Content)
 
 保存除了周六日休市之外，其它休市信息，换行分割
@@ -36,6 +33,7 @@ curl https://raw.githubusercontent.com/rainx/cn_stock_holidays/master/cn_stock_h
 store all (even upcoming) holiday for china stock exchange (without regular market close date on Saturday Day and Sun Day ) , one date per line
 
 ## 格式(File Format)
+
 ```
 YYYYMMDD
 ```
@@ -129,14 +127,13 @@ FUNCTIONS
 
 ### about function cache
 
-from version 0.10 on, we used functools.lrucache on `get_cached` for getting more speech, 
+from version 0.10 on, we used functools.lrucache on `get_cached` for getting more speech,
 if needed you can used the following syntax to clear cache.
 
 ```python
 get_cached.cache_clear()  
 
 ```
-
 
 ### Keep it up-to-date
 
@@ -151,10 +148,13 @@ you could set it up on cron job
 You could get the absolute path of cn-stock-holiday-sync by which command
 
 沪深
+
 ```bash
 which cn-stock-holiday-sync
 ```
+
 香港
+
 ```bash
 which cn-stock-holiday-sync-hk
 ```
