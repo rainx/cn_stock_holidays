@@ -7,7 +7,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="cn-stock-holidays",
-    version="1.9",
+    version="1.10",
     packages=find_packages(),
     install_requires=[
         'requests'
@@ -15,7 +15,7 @@ setup(
 
     # metadata for upload to PyPI
     author="rainx",
-    author_email="i@rainx.cn",
+    author_email="i@rainx.cc",
     description="A List of china stock exchange holidays",
     long_description=long_description,
     long_description_content_type="text/markdown",
