@@ -1,3 +1,7 @@
+1.11 2023年12月25日
+--
+* 更新了2024年国内的股市节假日 <https://www.tdx.com.cn/url/holiday/>
+ 
 1.10 2022年12月16日
 --
 * 更新了2023年国内的股市节假日 <https://www.tdx.com.cn/url/holiday/>
