@@ -7,7 +7,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="cn-stock-holidays",
-    version="1.11",
+    version="1.12",
     packages=find_packages(),
     install_requires=[
         'requests'
