@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cn-stock-holidays"
-version = "2.0.0"
+version = "2.1.0"
 description = "A List of china stock exchange holidays"
 readme = "README.md"
 license = { text = "MIT" }
@@ -64,6 +64,7 @@ dev = [
     "flake8>=6.0.0",
     "mypy>=1.0.0",
     "pre-commit>=3.0.0",
+    "ipython>=8.0.0",
 ]
 
 test = ["pytest>=7.0.0", "pytest-cov>=4.0.0"]
@@ -78,6 +79,7 @@ dev-dependencies = [
     "flake8>=6.0.0",
     "mypy>=1.0.0",
     "pre-commit>=3.0.0",
+    "ipython>=8.0.0",
 ]
 
 # Testing configuration

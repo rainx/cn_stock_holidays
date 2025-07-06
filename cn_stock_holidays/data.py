@@ -2,6 +2,7 @@
 """
 Help functions for python to get china stock exchange holidays
 """
+
 from cn_stock_holidays.meta_functions import *
 
 DATA_FILE_FOR_SHSZ = "data.txt"
@@ -48,7 +49,7 @@ if __name__ == "__main__":
     data = next_trading_day(datetime.date.today())
     print_result(data)
 
-    print("previous trading day after today?")
+    print("previous trading day before today?")
     data = previous_trading_day(datetime.date.today())
     print_result(data)
 
