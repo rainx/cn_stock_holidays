@@ -61,23 +61,6 @@ python scripts/quick_test.py
 - Cache management
 - Common utilities
 
-### `debug.py` - Full Debug Environment
-
-A comprehensive debug environment with advanced IPython features.
-
-**Usage:**
-
-```bash
-python scripts/debug.py
-```
-
-**Features:**
-
-- Full IPython environment
-- All modules and functions imported
-- Custom configuration and aliases
-- Advanced debugging capabilities
-
 ## IPython Configuration
 
 ### `ipython_config.py` - IPython Configuration

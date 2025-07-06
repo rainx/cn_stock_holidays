@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cn-stock-holidays"
-version = "2.1.2"
+version = "2.1.3"
 description = "A List of china stock exchange holidays"
 readme = "README.md"
 license = { text = "MIT" }
