@@ -1,12 +1,9 @@
-
 import unittest
 
 from cn_stock_holidays.data import *
 
 
 class TestData(unittest.TestCase):
-
-
 
     def test_get_cached(self):
         """
@@ -21,8 +18,10 @@ class TestData(unittest.TestCase):
 
         self.assertIsInstance(list(data)[0], datetime.date, "is a date")
 
-        self.assertTrue(datetime.date(1991, 2, 15) in data, "get datetime.date(1991, 2, 15) in cached data")
-
+        self.assertTrue(
+            datetime.date(1991, 2, 15) in data,
+            "get datetime.date(1991, 2, 15) in cached data",
+        )
 
     def test_trading_days_between(self):
         data = list(trading_days_between(int_to_date(20170125), int_to_date(20170131)))
@@ -30,7 +29,6 @@ class TestData(unittest.TestCase):
         self.assertEqual(len(data), 2)
         self.assertTrue(int_to_date(20170125) in data)
         self.assertTrue(int_to_date(20170126) in data)
-
 
     def test_is_trading_day(self):
         self.assertIsNotNone(is_trading_day(datetime.date.today()))

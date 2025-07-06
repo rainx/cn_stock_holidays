@@ -13,8 +13,10 @@ df = pd.DataFrame(data.Data[0])
 
 start_date, end_date = df[0].iloc[[0, -1]]
 
-weekmask = 'Mon Tue Wed Thu Fri'
+weekmask = "Mon Tue Wed Thu Fri"
 Cbd = CustomBusinessDay(weekmask=weekmask)
 dts = pd.date_range(start_date, end_date, freq=Cbd)
-res = pd.DataFrame({"date": list(set(dts.to_series()) - set(df[0]))}).sort_values('date')
-res['date'].to_csv('data.txt', index=False, date_format='%Y%m%d')
+res = pd.DataFrame({"date": list(set(dts.to_series()) - set(df[0]))}).sort_values(
+    "date"
+)
+res["date"].to_csv("data.txt", index=False, date_format="%Y%m%d")

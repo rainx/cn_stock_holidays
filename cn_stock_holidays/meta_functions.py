@@ -1,17 +1,23 @@
-#coding: utf-8
+# coding: utf-8
 
 
 import datetime
 import logging
 import os
 import requests
-from cn_stock_holidays.common import function_cache, int_to_date, print_result, _get_from_file
+from cn_stock_holidays.common import (
+    function_cache,
+    int_to_date,
+    print_result,
+    _get_from_file,
+)
 
 
 # meta func is not a good design, but for backward compatibility for data version and create similar logic for hk,
 # we did it
 
-def meta_get_local(data_file_name='data.txt'):
+
+def meta_get_local(data_file_name="data.txt"):
     def get_local(use_list=False):
         """
         read data from package data file
@@ -46,16 +52,20 @@ def meta_get_remote_and_cache(get_cached, get_cache_path):
         get newest data file from network and cache on local machine
         :return: a list contains all holiday data, element with datatime.date format
         """
-        response = requests.get('https://raw.githubusercontent.com/rainx/cn_stock_holidays/main/cn_stock_holidays/data.txt')
+        response = requests.get(
+            "https://raw.githubusercontent.com/rainx/cn_stock_holidays/main/cn_stock_holidays/data.txt"
+        )
         cache_path = get_cache_path()
 
-        with open(cache_path, 'wb') as f:
+        with open(cache_path, "wb") as f:
             f.write(response.content)
 
         get_cached.cache_clear()
 
         return get_cached()
+
     return get_remote_and_cache
+
 
 def meta_check_expired(get_cached):
     def check_expired():
@@ -69,6 +79,7 @@ def meta_check_expired(get_cached):
             if d > now:
                 return False
         return True
+
     return check_expired
 
 
@@ -81,16 +92,18 @@ def meta_sync_data(check_expired, get_remote_and_cache):
             logging.info("done")
         else:
             logging.info("local data is not exipired, do not fetch new data")
+
     return sync_data
 
 
-def meta_get_cache_path(data_file_name='data.txt'):
+def meta_get_cache_path(data_file_name="data.txt"):
     def get_cache_path():
-        usr_home = os.path.expanduser('~')
-        cache_dir = os.path.join(usr_home, '.cn_stock_holidays')
-        if not(os.path.isdir(cache_dir)):
+        usr_home = os.path.expanduser("~")
+        cache_dir = os.path.join(usr_home, ".cn_stock_holidays")
+        if not (os.path.isdir(cache_dir)):
             os.mkdir(cache_dir)
         return os.path.join(cache_dir, data_file_name)
+
     return get_cache_path
 
 
@@ -105,7 +118,9 @@ def meta_is_trading_day(get_cached):
         if dt in holidays:
             return False
         return True
+
     return is_trading_day
+
 
 def meta_previous_trading_day(is_trading_day):
     def previous_trading_day(dt):
@@ -116,7 +131,9 @@ def meta_previous_trading_day(is_trading_day):
             dt = dt - datetime.timedelta(days=1)
             if is_trading_day(dt):
                 return dt
+
     return previous_trading_day
+
 
 def meta_next_trading_day(is_trading_day):
     def next_trading_day(dt):
@@ -127,6 +144,7 @@ def meta_next_trading_day(is_trading_day):
             dt = dt + datetime.timedelta(days=1)
             if is_trading_day(dt):
                 return dt
+
     return next_trading_day
 
 
@@ -143,7 +161,8 @@ def meta_trading_days_between(get_cached):
             return
         curdate = start
         while curdate <= end:
-            if curdate.weekday() < 5 and not(curdate in dataset):
+            if curdate.weekday() < 5 and not (curdate in dataset):
                 yield curdate
             curdate = curdate + datetime.timedelta(days=1)
+
     return trading_days_between

@@ -3,6 +3,6 @@ from cn_stock_holidays.zipline.exchange_calendar_shsz import SHSZExchangeCalenda
 
 
 __all__ = [
-    'HKExchangeCalendar',
-    'SHSZExchangeCalendar',
+    "HKExchangeCalendar",
+    "SHSZExchangeCalendar",
 ]
