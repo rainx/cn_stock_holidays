@@ -200,6 +200,12 @@ def meta_get_cache_path(data_file_name="data.txt"):
 
 def meta_is_trading_day(get_cached):
     def is_trading_day(dt):
+        if dt is None:
+            raise TypeError("Date cannot be None")
+
+        if not isinstance(dt, (datetime.date, datetime.datetime)):
+            raise TypeError("Date must be datetime.date or datetime.datetime")
+
         if type(dt) is datetime.datetime:
             dt = dt.date()
 
@@ -220,6 +226,12 @@ def meta_is_half_day_trading_day(get_cached_with_half_day):
         :param dt: datetime.date or datetime.datetime
         :return: True if it's a half-day trading day, False otherwise
         """
+        if dt is None:
+            raise TypeError("Date cannot be None")
+
+        if not isinstance(dt, (datetime.date, datetime.datetime)):
+            raise TypeError("Date must be datetime.date or datetime.datetime")
+
         if type(dt) is datetime.datetime:
             dt = dt.date()
 

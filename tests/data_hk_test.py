@@ -93,5 +93,7 @@ class TestHkData(unittest.TestCase):
         holidays, half_days = get_cached_with_half_day()
         if half_days:
             sample_half_day = list(half_days)[0]
+            print(f"DEBUG sample_half_day: {sample_half_day}")
+            print(f"DEBUG is_trading_day meta info: {is_trading_day.__code__}")
             self.assertTrue(is_trading_day(sample_half_day))
             self.assertTrue(is_half_day_trading_day(sample_half_day))
