@@ -10,7 +10,8 @@
   - 引入 uv 作为现代化的 Python 包管理工具
   - 迁移到 pyproject.toml 配置，移除 setup.py
   - 添加完整的开发工具链：black, isort, mypy, flake8, pre-commit
-  - 更新 CI/CD 工作流，使用 uv 进行构建和测试
+  - 更新 CI/CD 工作流，使用 uv 进行测试、构建和发布
+  - 将 CI 工作流文件从 test.yml 重命名为 ci.yml，提高清晰度
   - 添加代码质量检查和自动化格式化
   - 支持现代 Python 打包标准 (PEP 517/518)
   - 改进项目结构和文档

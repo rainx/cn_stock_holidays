@@ -82,6 +82,8 @@ cn_stock_holidays/
 │   └── tools/                  # Command line tools
 ├── tests/                      # Test files
 ├── scripts/                    # Development scripts
+├── .github/workflows/          # CI/CD workflows
+│   └── ci.yml                  # Test, Build & Publish workflow
 ├── pyproject.toml             # Project configuration
 ├── README.md                  # English documentation
 ├── README-zh_CN.md            # Chinese documentation
