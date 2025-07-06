@@ -57,7 +57,9 @@ def fetch_hsi(start, end):
     """
 
     s = requests.Session()
-    s.headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
+    s.headers["User-Agent"] = (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
+    )
     res = s.get("https://cn.investing.com/indices/hang-sen-40-historical-data")
     content = res.text
 
@@ -84,11 +86,15 @@ def fetch_hsi(start, end):
 
     # headers = {one.split(":")[0]:one.split(":")[1] for one in request_header.split("\n") if one.strip("") != ""}
 
-    #logging.info("posting data")
-    #pprint.pprint(post_data)
-    s.headers['Referer'] = 'https://cn.investing.com/indices/hang-sen-40-historical-data'
-    s.headers['X-Requested-With'] = 'XMLHttpRequest'
-    response = s.post("https://cn.investing.com/instruments/HistoricalDataAjax", data=post_data)
+    # logging.info("posting data")
+    # pprint.pprint(post_data)
+    s.headers["Referer"] = (
+        "https://cn.investing.com/indices/hang-sen-40-historical-data"
+    )
+    s.headers["X-Requested-With"] = "XMLHttpRequest"
+    response = s.post(
+        "https://cn.investing.com/instruments/HistoricalDataAjax", data=post_data
+    )
     result = response.text
     soup = BeautifulSoup(result, "lxml")
     tbody = soup.find("tbody")
@@ -97,7 +103,7 @@ def fetch_hsi(start, end):
     trade_dates = []
 
     for tr in tbody.find_all("tr"):
-        if tr.name != 'tr':
+        if tr.name != "tr":
             continue
 
         c = tr.find_all("td")
@@ -118,15 +124,17 @@ def fetch_hsi(start, end):
 
         trade_dates.append(trade_date)
 
-        lines.append({
-            "trade_date": trade_date,
-            "price": price,
-            "o": o,
-            "h": h,
-            "l": l,
-            "amount": amount,
-            "chg": chg
-        })
+        lines.append(
+            {
+                "trade_date": trade_date,
+                "price": price,
+                "o": o,
+                "h": h,
+                "l": l,
+                "amount": amount,
+                "chg": chg,
+            }
+        )
 
     return lines, trade_dates
 
@@ -147,7 +155,7 @@ if __name__ == __name__:
 
     offset = start
     results = []
-    trade_dates=[]
+    trade_dates = []
     while offset < end:
         offset_end = offset + timedelta(days=30)
         if offset_end > end:
@@ -156,11 +164,11 @@ if __name__ == __name__:
         offset = offset_end
         results += chunk
         trade_dates += chunk_trade_dates
-        logging.info("process 30 days , really data len is {} now offset to {}".format(len(chunk), offset))
+        logging.info(
+            "process 30 days , really data len is {} now offset to {}".format(
+                len(chunk), offset
+            )
+        )
 
     pickle.dump(trade_dates, open("./trade_dates", "wb"))
     pickle.dump(results, open("./hki.pickle", "wb"))
-
-
-
-

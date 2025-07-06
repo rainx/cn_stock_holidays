@@ -38,16 +38,34 @@ store all (even upcoming) holiday for china stock exchange (without regular mark
 YYYYMMDD
 ```
 
-## Python version
+## Installation
 
+### Using uv (Recommended)
+
+This project supports [uv](https://github.com/astral-sh/uv), a fast Python package installer:
+
+```bash
+# Install uv first
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install the package
+uv pip install cn-stock-holidays
 ```
+
+### Using pip
+
+```bash
 pip install cn-stock-holidays
 ```
 
-or
+### From source
 
-```
-pip install git+https://github.com/rainx/cn_stock_holidays.git
+```bash
+git clone https://github.com/rainx/cn_stock_holidays.git
+cd cn_stock_holidays
+uv sync --dev  # Install with uv
+# or
+pip install -e .  # Install with pip
 ```
 
 ### 导入
@@ -131,7 +149,7 @@ from version 0.10 on, we used functools.lrucache on `get_cached` for getting mor
 if needed you can used the following syntax to clear cache.
 
 ```python
-get_cached.cache_clear()  
+get_cached.cache_clear()
 
 ```
 

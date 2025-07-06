@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 
 import logging
 import pickle
@@ -10,7 +10,7 @@ from cn_stock_holidays.data import *
 logging.getLogger().setLevel(logging.INFO)
 
 
-data = pickle.load(open("./trade_dates", 'rb'))
+data = pickle.load(open("./trade_dates", "rb"))
 
 simple_dates = [datetime.datetime.strptime(d, r"%Y年%m月%d日").date() for d in data]
 start = reduce(lambda x, y: x if x < y else y, simple_dates)
@@ -43,7 +43,3 @@ holidays_str = [date_to_str(da) for da in holidays]
 
 with open("data_hk.txt", "w") as hk:
     hk.write("\n".join(holidays_str))
-
-
-
-
