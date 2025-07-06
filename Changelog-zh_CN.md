@@ -13,6 +13,7 @@
   - 更新 CI/CD 工作流，使用 uv 进行测试、构建和发布
   - 将 CI 工作流文件从 test.yml 重命名为 ci.yml，提高清晰度
   - 迁移到 PyPI Trusted Publisher 实现安全的自动化发布
+  - 修复已弃用的 GitHub Actions upload-artifact，从 v3 升级到 v4
   - 添加代码质量检查和自动化格式化
   - 支持现代 Python 打包标准 (PEP 517/518)
   - 改进项目结构和文档
