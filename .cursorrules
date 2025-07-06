@@ -44,9 +44,22 @@ This is a Python package providing China stock exchange holiday data for both Sh
 ### Documentation
 
 - Keep README.md and README-zh_CN.md in sync
-- Update ChangeLog.md for all version releases
+- Update Changelog.md for all version releases
 - Document all public APIs
 - Include usage examples in docstrings
+
+### Changelog Format
+
+- **File naming**: Use `Changelog.md` (English) and `Changelog-zh_CN.md` (Chinese)
+- **Version titles**: Use format `## cn-stock-holidays x.y.z (YYYY-MM-DD)`
+- **Categories**: Use ### headers to categorize changes:
+  - `### New Features` - New functionality added
+  - `### Bug Fixes` - Bug fixes and corrections
+  - `### Improvements` - Enhancements and updates
+  - `### Breaking Changes` - Breaking changes (if any)
+  - `### Historical` - For legacy/version 0.x entries
+- **Content**: All changelog entries must be in English for Changelog.md
+- **Translation**: Keep Changelog.md and Changelog-zh_CN.md synchronized
 
 ### Git Workflow
 
@@ -72,7 +85,9 @@ cn_stock_holidays/
 ├── pyproject.toml             # Project configuration
 ├── README.md                  # English documentation
 ├── README-zh_CN.md            # Chinese documentation
-└── ChangeLog.md               # Version history
+├── Changelog.md               # English changelog
+├── Changelog-zh_CN.md         # Chinese changelog
+└── .cursorrules               # This file
 ```
 
 ### Key Principles
@@ -87,6 +102,7 @@ cn_stock_holidays/
 
 1. Update both README.md and README-zh_CN.md if documentation changes
 2. Add tests for new functionality
-3. Update ChangeLog.md for version releases
+3. Update Changelog.md and Changelog-zh_CN.md for version releases
 4. Ensure all CI checks pass
 5. Follow the established code style and patterns
+6. Use the standardized changelog format with proper categorization
