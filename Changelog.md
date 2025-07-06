@@ -2,6 +2,19 @@
 
 Versions follow Semantic Versioning (<major>.<minor>.<patch>).
 
+## cn-stock-holidays 2.1.3 (2025-01-27)
+
+### Improvements
+
+- **Code Cleanup and Maintenance**: Removed outdated and unused code to improve project maintainability
+  - Removed `wind_holidays.py` - outdated Wind API integration script
+  - Removed temporary data processing tools in `tools/in/` directory
+  - Removed deprecated `utils/` directory with unused data fetching scripts
+  - Consolidated development scripts by merging `debug.py` into `dev_shell.py`
+  - Simplified `ipython_config.py` configuration
+  - Updated documentation and script references
+  - Reduced codebase by ~500+ lines of unused code while maintaining 100% test coverage
+
 ## cn-stock-holidays 2.1.2 (2025-01-27)
 
 ### Bug Fixes

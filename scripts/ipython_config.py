@@ -65,23 +65,14 @@ c.InteractiveShellApp.exec_lines.extend(
 # Enable rich display
 c.InteractiveShell.ast_node_interactivity = "all"
 
-# Enable history search
-c.TerminalInteractiveShell.editing_mode = "vi"
-
-# Enable syntax highlighting
-c.TerminalInteractiveShell.highlighting_style = "monokai"
-
 # Enable auto-completion
 c.IPCompleter.use_jedi = True
 c.IPCompleter.greedy = True
 
-# Enable magic commands
-c.InteractiveShell.magic_commands = True
-
 # Set up aliases for common operations
 c.AliasManager.user_aliases = [
     ("test", "python scripts/quick_test.py"),
-    ("debug", "python scripts/debug.py"),
+    ("shell", "python scripts/dev_shell.py"),
     ("cache", "get_cache_info()"),
     ("clear-cache", "clear_cache()"),
     ("hk-test", 'is_trading_day_hk("2024-12-24")'),

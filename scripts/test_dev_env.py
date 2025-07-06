@@ -94,7 +94,6 @@ def test_scripts():
     scripts = [
         "scripts/quick_test.py",
         "scripts/dev_shell.py",
-        "scripts/debug.py",
         "scripts/ipython_config.py",
     ]
 
