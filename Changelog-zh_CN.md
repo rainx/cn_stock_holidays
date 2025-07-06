@@ -15,6 +15,7 @@
   - 迁移到 PyPI Trusted Publisher 实现安全的自动化发布
   - 修复已弃用的 GitHub Actions upload-artifact，从 v3 升级到 v4
   - 修复 uv publish 命令，移除不支持的 --yes 标志并添加 trusted-publishing
+  - 修复发布作业，添加 download-artifact 步骤以访问构建的包
   - 添加代码质量检查和自动化格式化
   - 支持现代 Python 打包标准 (PEP 517/518)
   - 改进项目结构和文档

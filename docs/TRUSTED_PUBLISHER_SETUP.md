@@ -34,6 +34,16 @@ publish:
   permissions:
     id-token: write # Required for Trusted Publisher authentication
   steps:
+    - uses: actions/checkout@v4
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: dist
+        path: dist/
+    - name: Install uv
+      uses: astral-sh/setup-uv@v1
+      with:
+        version: latest
     - name: Publish to PyPI
       run: uv publish --trusted-publishing automatic
 ```
