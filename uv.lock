@@ -259,7 +259,7 @@ wheels = [
 
 [[package]]
 name = "cn-stock-holidays"
-version = "2.1.0"
+version = "2.1.2"
 source = { editable = "." }
 dependencies = [
     { name = "click", version = "8.1.8", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
