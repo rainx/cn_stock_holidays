@@ -2,6 +2,12 @@
 
 版本遵循语义化版本控制 (<major>.<minor>.<patch>)。
 
+## cn-stock-holidays 2.1.1 (2025-01-27)
+
+### 错误修复
+
+- 修复了 2024-02-09（除夕）的历史数据 - 更新为反映该日期市场休市 ([Issue #16](https://github.com/rainx/cn_stock_holidays/issues/16))
+
 ## cn-stock-holidays 2.1.0 (2024-12-19)
 
 ### 新功能

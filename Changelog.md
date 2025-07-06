@@ -2,6 +2,12 @@
 
 Versions follow Semantic Versioning (<major>.<minor>.<patch>).
 
+## cn-stock-holidays 2.1.1 (2025-01-27)
+
+### Bug Fixes
+
+- Fixed historical data for 2024-02-09 (Chinese New Year's Eve) - updated to reflect that markets were closed on this date ([Issue #16](https://github.com/rainx/cn_stock_holidays/issues/16))
+
 ## cn-stock-holidays 2.1.0 (2024-12-19)
 
 ### New Features
