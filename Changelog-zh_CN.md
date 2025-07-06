@@ -2,6 +2,12 @@
 
 版本遵循语义化版本控制 (<major>.<minor>.<patch>)。
 
+## cn-stock-holidays 2.1.2 (2025-01-27)
+
+### 错误修复
+
+- 修复了 2019 年劳动节假期安排的历史数据 - 确认 2019 年 5 月 2 日和 3 日休市，符合上交所公告 ([Issue #13](https://github.com/rainx/cn_stock_holidays/issues/13), [上交所参考](https://www.sse.com.cn/disclosure/announcement/general/c/c_20190418_4771364.shtml))
+
 ## cn-stock-holidays 2.1.1 (2025-01-27)
 
 ### 错误修复

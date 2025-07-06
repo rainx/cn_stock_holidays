@@ -2,6 +2,12 @@
 
 Versions follow Semantic Versioning (<major>.<minor>.<patch>).
 
+## cn-stock-holidays 2.1.2 (2025-01-27)
+
+### Bug Fixes
+
+- Fixed historical data for 2019 Labor Day holiday arrangement - confirmed May 2nd and 3rd, 2019 were closed as per SSE announcement ([Issue #13](https://github.com/rainx/cn_stock_holidays/issues/13), [SSE Reference](https://www.sse.com.cn/disclosure/announcement/general/c/c_20190418_4771364.shtml))
+
 ## cn-stock-holidays 2.1.1 (2025-01-27)
 
 ### Bug Fixes
