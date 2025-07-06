@@ -39,11 +39,31 @@ curl https://raw.githubusercontent.com/rainx/cn_stock_holidays/main/cn_stock_hol
 
 ## Data Format
 
+### Shanghai/Shenzhen Market
+
 The data files store all holidays for China stock exchanges (excluding regular weekend closures on Saturday and Sunday), with one date per line in the format:
 
 ```
 YYYYMMDD
 ```
+
+### Hong Kong Market
+
+Hong Kong market data supports both regular holidays and half-day trading days. The format is:
+
+```
+YYYYMMDD    # Regular holiday
+YYYYMMDD,h  # Half-day trading day
+```
+
+**Half-day trading days** are days when the market is open for only part of the day (typically morning session only). Common half-day trading days in Hong Kong include:
+
+- Christmas Eve (December 24)
+- New Year's Eve (December 31)
+- Lunar New Year's Eve
+- Day before major holidays (Qingming Festival, National Day)
+
+**Important**: Half-day trading days are still considered trading days by all standard functions (`is_trading_day()`, `next_trading_day()`, etc.). Use `is_half_day_trading_day()` to specifically detect half-day trading days.
 
 ## Installation
 
@@ -107,6 +127,28 @@ for trading_day in shsz.trading_days_between(start_date, end_date):
 # Data synchronization
 shsz.sync_data()  # Sync data if expired
 shsz.check_expired()  # Check if data needs update
+```
+
+### Hong Kong Market with Half-Day Trading Support
+
+```python
+# Import Hong Kong market functions
+import cn_stock_holidays.data_hk as hkex
+
+# Standard trading day functions (same as Shanghai/Shenzhen)
+is_trading = hkex.is_trading_day(date)
+prev_day = hkex.previous_trading_day(date)
+next_day = hkex.next_trading_day(date)
+
+# Half-day trading detection (Hong Kong market only)
+is_half_day = hkex.is_half_day_trading_day(date)  # Check if date is a half-day trading day
+
+# Get data with half-day trading support
+holidays, half_days = hkex.get_cached_with_half_day()  # Returns (holidays_set, half_days_set)
+
+# Data synchronization with half-day support
+hkex.sync_data_with_half_day()  # Sync data if expired
+hkex.check_expired_with_half_day()  # Check if data needs update
 ```
 
 ### Function Details

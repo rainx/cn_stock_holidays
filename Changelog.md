@@ -2,6 +2,29 @@
 
 Versions follow Semantic Versioning (<major>.<minor>.<patch>).
 
+## cn-stock-holidays 2.1.0 (2024-12-19)
+
+### New Features
+
+- **Half-Day Trading Support for Hong Kong Market**: Added comprehensive support for Hong Kong stock exchange half-day trading
+  - New `is_half_day_trading_day()` function to detect half-day trading days
+  - Enhanced data format support with `,h` suffix for half-day trading dates (e.g., `20251225,h`)
+  - Backward compatibility maintained for existing Shanghai/Shenzhen market data
+  - Half-day trading days are still considered trading days by `is_trading_day()`, `next_trading_day()`, `previous_trading_day()`, and `trading_days_between()`
+  - Updated Hong Kong market data to include half-day trading dates through 2025
+  - Added comprehensive test suite for half-day trading functionality
+
+### Improvements
+
+- Extended Hong Kong market holiday data through 2025
+- Added support for common half-day trading patterns:
+  - Christmas Eve (December 24)
+  - New Year's Eve (December 31)
+  - Lunar New Year's Eve
+  - Day before major holidays (Qingming Festival, National Day)
+- Enhanced data parsing with `_get_from_file_with_half_day()` function
+- Added new meta functions for half-day trading support while maintaining existing API compatibility
+
 ## cn-stock-holidays 2.0.0 (2024-12-19)
 
 ### New Features
