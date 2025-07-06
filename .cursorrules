@@ -1,0 +1,92 @@
+# Cursor Rules for cn_stock_holidays
+
+## Project Overview
+
+This is a Python package providing China stock exchange holiday data for both Shanghai/Shenzhen (SHSZ) and Hong Kong (HKEX) markets. The project uses modern Python packaging standards with uv as the package manager.
+
+## Code Style & Standards
+
+### Language Requirements
+
+- **All code comments and commit messages must be in English**
+- **Documentation**: README.md is in English, README-zh_CN.md is the Chinese translation
+- **Code**: All variable names, function names, and comments must be in English
+
+### Python Standards
+
+- Use Python 3.8+ features
+- Follow PEP 8 style guidelines
+- Use type hints where appropriate
+- Use f-strings for string formatting
+- Prefer list comprehensions over map/filter when readable
+
+### Package Management
+
+- Use `uv` as the primary package manager
+- Dependencies are managed in `pyproject.toml`
+- Development dependencies include: pytest, black, isort, flake8, mypy, pre-commit
+
+### Code Quality
+
+- All code must pass black formatting
+- All imports must be sorted with isort
+- All code must pass flake8 linting
+- All code must pass mypy type checking
+- Use pre-commit hooks for automated quality checks
+
+### Testing
+
+- Write tests for all new functionality
+- Use pytest as the testing framework
+- Aim for high test coverage
+- Test files should be named `*_test.py`
+
+### Documentation
+
+- Keep README.md and README-zh_CN.md in sync
+- Update ChangeLog.md for all version releases
+- Document all public APIs
+- Include usage examples in docstrings
+
+### Git Workflow
+
+- Use conventional commit messages
+- All commits must be in English
+- Create feature branches for new development
+- Ensure CI passes before merging
+
+### Project Structure
+
+```
+cn_stock_holidays/
+├── cn_stock_holidays/          # Main package
+│   ├── __init__.py
+│   ├── data.py                 # Shanghai/Shenzhen market data
+│   ├── data_hk.py              # Hong Kong market data
+│   ├── common.py               # Shared utilities
+│   ├── meta_functions.py       # Meta-function patterns
+│   ├── zipline/                # Zipline integration
+│   └── tools/                  # Command line tools
+├── tests/                      # Test files
+├── scripts/                    # Development scripts
+├── pyproject.toml             # Project configuration
+├── README.md                  # English documentation
+├── README-zh_CN.md            # Chinese documentation
+└── ChangeLog.md               # Version history
+```
+
+### Key Principles
+
+1. **Internationalization**: Support both English and Chinese users
+2. **Modern Python**: Use latest Python packaging standards
+3. **Performance**: Optimize for speed with caching mechanisms
+4. **Reliability**: Ensure data accuracy and availability
+5. **Maintainability**: Keep code clean and well-documented
+
+### When Making Changes
+
+1. Update both README.md and README-zh_CN.md if documentation changes
+2. Add tests for new functionality
+3. Update ChangeLog.md for version releases
+4. Ensure all CI checks pass
+5. Follow the established code style and patterns
