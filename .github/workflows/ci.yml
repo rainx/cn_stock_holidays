@@ -60,4 +60,4 @@ jobs:
           version: latest
       - name: Publish to PyPI
         run: |
-          uv publish --yes
+          uv publish --trusted-publishing automatic

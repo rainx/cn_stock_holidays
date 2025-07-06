@@ -14,6 +14,7 @@ Versions follow Semantic Versioning (<major>.<minor>.<patch>).
   - Renamed CI workflow file from test.yml to ci.yml for better clarity
   - Migrated to PyPI Trusted Publisher for secure automated publishing
   - Fixed deprecated GitHub Actions upload-artifact from v3 to v4
+  - Fixed uv publish command by removing unsupported --yes flag and adding trusted-publishing
   - Added code quality checks and automated formatting
   - Support for modern Python packaging standards (PEP 517/518)
   - Improved project structure and documentation

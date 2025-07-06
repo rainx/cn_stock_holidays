@@ -35,7 +35,7 @@ publish:
     id-token: write # Required for Trusted Publisher authentication
   steps:
     - name: Publish to PyPI
-      run: uv publish --yes
+      run: uv publish --trusted-publishing automatic
 ```
 
 ### 3. Publishing Process
