@@ -1,6 +1,6 @@
 # cn_stock_holidays
 
-![CI Status](https://github.com/rainx/cn_stock_holidays/actions/workflows/test.yml/badge.svg)
+![CI Status](https://github.com/rainx/cn_stock_holidays/actions/workflows/ci.yml/badge.svg)
 
 A comprehensive Python package providing China stock exchange holiday data for both Shanghai/Shenzhen (SHSZ) and Hong Kong (HKEX) markets. This package serves as a reliable data source and utility library for financial applications that need to determine trading days.
 
@@ -246,6 +246,29 @@ uv run black .
 # Type checking
 uv run mypy cn_stock_holidays/
 ```
+
+### Publishing
+
+This project uses [PyPI Trusted Publisher](https://docs.pypi.org/trusted-publishers/) for secure automated publishing. The CI workflow automatically publishes to PyPI when a new tag is pushed.
+
+**To publish a new version:**
+
+1. Update version in `pyproject.toml`
+2. Create and push a new tag:
+   ```bash
+   git tag v2.0.1
+   git push origin v2.0.1
+   ```
+3. The CI workflow will automatically test, build, and publish to PyPI
+
+**Security Benefits:**
+
+- No need to manage long-lived API tokens
+- Short-lived authentication tokens (15 minutes)
+- Repository-specific permissions
+- Automated OIDC authentication
+
+See [Trusted Publisher Setup](docs/TRUSTED_PUBLISHER_SETUP.md) for detailed configuration instructions.
 
 ## Contributing
 

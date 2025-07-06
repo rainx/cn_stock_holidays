@@ -1,6 +1,6 @@
 # cn_stock_holidays
 
-![CI Status](https://github.com/rainx/cn_stock_holidays/actions/workflows/test.yml/badge.svg)
+![CI Status](https://github.com/rainx/cn_stock_holidays/actions/workflows/ci.yml/badge.svg)
 
 一个全面的 Python 包，为中国大陆（沪深）和香港股票交易所提供节假日数据。该包为需要确定交易日的金融应用程序提供可靠的数据源和实用工具库。
 

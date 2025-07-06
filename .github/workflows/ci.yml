@@ -50,6 +50,8 @@ jobs:
     if: github.ref == 'refs/heads/main' && startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      id-token: write # Required for Trusted Publisher authentication
     steps:
       - uses: actions/checkout@v4
       - name: Install uv
@@ -59,6 +61,3 @@ jobs:
       - name: Publish to PyPI
         run: |
           uv publish --yes
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
