@@ -2,6 +2,20 @@
 
 Versions follow Semantic Versioning (<major>.<minor>.<patch>).
 
+## cn-stock-holidays 2.1.4 (2025-12-07)
+
+### Improvements
+
+- **Updated 2026 Stock Market Holidays**: Added complete holiday data for 2026 from TDX official source
+  - New Year's Day: January 1-2
+  - Spring Festival: February 16-20, 23
+  - Qingming Festival: April 6
+  - Labor Day: May 1, 4-5
+  - Dragon Boat Festival: June 19
+  - Mid-Autumn Festival: September 25
+  - National Day: October 1-2, 5-7
+  - Data source: <https://www.tdx.com.cn/url/holiday/>
+
 ## cn-stock-holidays 2.1.3 (2025-01-27)
 
 ### Improvements
