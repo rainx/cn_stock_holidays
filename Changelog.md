@@ -2,6 +2,15 @@
 
 Versions follow Semantic Versioning (<major>.<minor>.<patch>).
 
+## cn-stock-holidays 2.1.5 (2025-12-07)
+
+### Improvements
+
+- **Updated 2026 Hong Kong Stock Market Holidays**: Added complete holiday data for 2026 from HKEX official circular
+  - Full-day closures: New Year's Day (Jan 1), Lunar New Year (Feb 17-19), Good Friday (Apr 3), Day after Ching Ming (Apr 6), Day after Easter Monday (Apr 7), Labour Day (May 1), Day after Buddha's Birthday (May 25), Dragon Boat Festival (Jun 19), HKSAR Day (Jul 1), National Day (Oct 1), Day after Chung Yeung Festival (Oct 19), Christmas (Dec 25)
+  - Half-day trading: Lunar New Year's Eve (Feb 16), Christmas Eve (Dec 24), New Year's Eve (Dec 31)
+  - Data source: HKEX Circular CT/075/25 (<https://www.hkex.com.hk/News/HKEX-Calendar?sc_lang=zh-HK>)
+
 ## cn-stock-holidays 2.1.4 (2025-12-07)
 
 ### Improvements
