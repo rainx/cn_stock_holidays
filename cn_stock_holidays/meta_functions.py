@@ -203,7 +203,7 @@ def meta_is_trading_day(get_cached):
         if dt is None:
             raise TypeError("Date cannot be None")
 
-        if not isinstance(dt, (datetime.date, datetime.datetime)):
+        if not ((type(dt) is datetime.date) or (type(dt) is datetime.datetime)):
             raise TypeError("Date must be datetime.date or datetime.datetime")
 
         if type(dt) is datetime.datetime:
