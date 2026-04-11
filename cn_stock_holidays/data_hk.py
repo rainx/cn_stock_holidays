@@ -60,6 +60,10 @@ is_half_day_trading_day = meta_is_half_day_trading_day(
 
 # Override is_trading_day for HK to treat both normal and half-day trading days as trading days
 def is_trading_day(dt):
+    if dt is None:
+        raise TypeError("Date cannot be None")
+    if not ((type(dt) is datetime.date) or (type(dt) is datetime.datetime)):
+        raise TypeError("Date must be datetime.date or datetime.datetime")
     if type(dt) is datetime.datetime:
         dt = dt.date()
     if dt.weekday() >= 5:

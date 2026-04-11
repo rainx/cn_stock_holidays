@@ -4,15 +4,16 @@
 import datetime
 import logging
 import os
+
 import requests
+
 from cn_stock_holidays.common import (
+    _get_from_file,
+    _get_from_file_with_half_day,
     function_cache,
     int_to_date,
     print_result,
-    _get_from_file,
-    _get_from_file_with_half_day,
 )
-
 
 # meta func is not a good design, but for backward compatibility for data version and create similar logic for hk,
 # we did it
@@ -229,7 +230,7 @@ def meta_is_half_day_trading_day(get_cached_with_half_day):
         if dt is None:
             raise TypeError("Date cannot be None")
 
-        if not isinstance(dt, (datetime.date, datetime.datetime)):
+        if not ((type(dt) is datetime.date) or (type(dt) is datetime.datetime)):
             raise TypeError("Date must be datetime.date or datetime.datetime")
 
         if type(dt) is datetime.datetime:
